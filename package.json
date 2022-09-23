@@ -62,11 +62,17 @@
           "module": "WidgetPluginModule",
           "path": "./widget/widget-plugin.module.ts",
           "description": "Adds a custom widget to the shell application"
+        },
+        {
+          "name": "Device bookmarks",
+          "module": "BookmarksModule",
+          "path": "./bookmarks/bookmarks.module.ts",
+          "description": "Allows you to bookmark your favorite device"
         }
       ],
       "remotes": {
         "summit-ui-demo": [
-          "WidgetPluginModule"
+          "WidgetPluginModule", "BookmarksModule"
         ]
       }
     }
