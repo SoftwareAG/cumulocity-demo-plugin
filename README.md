@@ -14,6 +14,7 @@ Add your tenant and shell to npm start command. Run `npm start` and checkout the
 
 <details>
   <summary>Diff</summary>
+
 ``` 
 diff --git a/package.json b/package.json
 index b100dfe..a2dfd14 100644
@@ -30,6 +31,7 @@ index b100dfe..a2dfd14 100644
      "postinstall": "ngcc"
 
 ```
+
 </details>
 
  > If not working -> checkout `step1` branch
@@ -42,6 +44,7 @@ Add a new plugin adding a navigator node
 
 <details>
   <summary>Diff</summary>
+
 ``` 
 diff --git a/bookmarks/bookmarks.module.ts b/bookmarks/bookmarks.module.ts
 new file mode 100644
@@ -110,7 +113,8 @@ index a2dfd14..bd81906 100644
        }
      }
 
-``` 
+```
+
 </details>
 
  > If not working -> checkout `step2` branch
@@ -123,6 +127,8 @@ Add logic and injection to the HOOK
 
 <details>
   <summary>Diff</summary>
+
+```
 diff --git a/bookmarks/bookmarks.service.ts b/bookmarks/bookmarks.service.ts
 index a3e0765..00c23fc 100644
 --- a/bookmarks/bookmarks.service.ts
@@ -168,19 +174,22 @@ index a3e0765..00c23fc 100644
 -}
 \ No newline at end of file
 +}
+```
 
 </details>
 
  > If not working -> checkout `step3` branch
  
-## 3. Step
+## 4. Step
 Add a action bar for all devices
 
  - use routing to check if on a device
  - use content projection to avoid root element
  
- <details>
+<details>
   <summary>Diff</summary>
+
+```
   diff --git a/bookmarks/add-bookmark.component.ts b/bookmarks/add-bookmark.component.ts
 new file mode 100644
 index 0000000..8adaff1
@@ -266,9 +275,11 @@ index 9907e4a..c370178 100644
  })
  export class BookmarksModule {}
 
-</details>
+```
 
-## 4. Step
+</details>
+  
+## 5. Step
 Add the logic to bookmark a device
 
  - get the context
@@ -276,13 +287,14 @@ Add the logic to bookmark a device
  
 <details>
   <summary>Diff</summary>
+
+```
 diff --git a/bookmarks/add-bookmark.component.ts b/bookmarks/add-bookmark.component.ts
-new file mode 100644
-index 0000000..bc69b7d
---- /dev/null
+index d16c009..bc69b7d 100644
+--- a/bookmarks/add-bookmark.component.ts
 +++ b/bookmarks/add-bookmark.component.ts
-@@ -0,0 +1,59 @@
-+import { Component, ViewChild, ViewContainerRef } from "@angular/core";
+@@ -1,4 +1,11 @@
+ import { Component, ViewChild, ViewContainerRef } from "@angular/core";
 +import { Router } from "@angular/router";
 +import { InventoryService } from "@c8y/client";
 +import {
@@ -290,28 +302,28 @@ index 0000000..bc69b7d
 +  getActivatedRoute,
 +  NavigatorService,
 +} from "@c8y/ngx-components";
-+
-+@Component({
-+  selector: "[c8y-add-bookmark]",
-+  template: `
-+    <ng-template #template>
-+      <li>
-+        <button
-+          title="Bookmark device"
-+          class="btn btn-link"
+ 
+ @Component({
+   selector: "[c8y-add-bookmark]",
+@@ -8,8 +15,9 @@ import { Component, ViewChild, ViewContainerRef } from "@angular/core";
+         <button
+           title="Bookmark device"
+           class="btn btn-link"
 +          (click)="bookmark()"
-+        >
+         >
+-          <i [c8yIcon]="'star'"></i>
 +          <i [c8yIcon]="isBookmarked ? 'star' : 'star-outline'"></i>
-+          Bookmark device
-+        </button>
-+      </li>
-+    </ng-template>
-+  `,
-+})
-+export class AddBookmarkComponent {
+           Bookmark device
+         </button>
+       </li>
+@@ -17,11 +25,35 @@ import { Component, ViewChild, ViewContainerRef } from "@angular/core";
+   `,
+ })
+ export class AddBookmarkComponent {
 +  isBookmarked = true;
-+  @ViewChild("template", { static: true }) template;
-+
+   @ViewChild("template", { static: true }) template;
+ 
+-  constructor(private viewContainerRef: ViewContainerRef) {}
 +  constructor(
 +    private viewContainerRef: ViewContainerRef,
 +    private router: Router,
@@ -319,9 +331,9 @@ index 0000000..bc69b7d
 +    private contextRoute: ContextRouteService,
 +    private navigator: NavigatorService
 +  ) {}
-+
-+  ngOnInit() {
-+    this.viewContainerRef.createEmbeddedView(this.template);
+ 
+   ngOnInit() {
+     this.viewContainerRef.createEmbeddedView(this.template);
 +    this.isBookmarked = !!this.contextRoute.getContextData(
 +      getActivatedRoute(this.router)
 +    )?.contextData?.c8y_IsBookmarked;
@@ -339,61 +351,9 @@ index 0000000..bc69b7d
 +      this.isBookmarked = !this.isBookmarked;
 +    }
 +    this.navigator.refresh();
-+  }
-+}
-diff --git a/bookmarks/add-bookmark.service.ts b/bookmarks/add-bookmark.service.ts
-new file mode 100644
-index 0000000..242e9e5
---- /dev/null
-+++ b/bookmarks/add-bookmark.service.ts
-@@ -0,0 +1,22 @@
-+import { Injectable } from "@angular/core";
-+import { Router } from "@angular/router";
-+import { ActionBarItem } from "@c8y/ngx-components";
-+import { AddBookmarkComponent } from "./add-bookmark.component";
-+
-+@Injectable({
-+  providedIn: "root",
-+})
-+export class AddBookmarkService {
-+  constructor(private router: Router) {}
-+
-+  get() {
-+    if (/device\/\w+/.test(this.router.url)) {
-+      return {
-+        template: AddBookmarkComponent,
-+        priority: 0,
-+        placement: "more",
-+      } as ActionBarItem;
-+    }
-+    return [];
-+  }
-+}
-diff --git a/bookmarks/bookmarks.module.ts b/bookmarks/bookmarks.module.ts
-index 9907e4a..c370178 100644
---- a/bookmarks/bookmarks.module.ts
-+++ b/bookmarks/bookmarks.module.ts
-@@ -1,15 +1,18 @@
- import { NgModule } from "@angular/core";
--import { CommonModule } from "@angular/common";
-+import { CommonModule } from "@c8y/ngx-components";
- import { BookmarksService } from "./bookmarks.service";
--import { HOOK_NAVIGATOR_NODES } from "@c8y/ngx-components";
-+import { AddBookmarkService } from "./add-bookmark.service";
-+import { HOOK_ACTION_BAR, HOOK_NAVIGATOR_NODES } from "@c8y/ngx-components";
-+import { AddBookmarkComponent } from "./add-bookmark.component";
- 
- @NgModule({
--  declarations: [],
-+  declarations: [AddBookmarkComponent],
-   imports: [CommonModule],
-   exports: [],
-   providers: [
-     BookmarksService,
-     { provide: HOOK_NAVIGATOR_NODES, useClass: BookmarksService, multi: true },
-+    { provide: HOOK_ACTION_BAR, useClass: AddBookmarkService, multi: true }
-   ],
- })
- export class BookmarksModule {}
+   }
+ }
+
+```
 
 </details>
