@@ -14,6 +14,7 @@ Add your tenant and shell to npm start command. Run `npm start` and checkout the
 
 <details>
   <summary>Diff</summary>
+
 ``` 
 diff --git a/package.json b/package.json
 index b100dfe..a2dfd14 100644
@@ -30,6 +31,7 @@ index b100dfe..a2dfd14 100644
      "postinstall": "ngcc"
 
 ```
+
 </details>
 
  > If not working -> checkout `step1` branch
@@ -42,6 +44,7 @@ Add a new plugin adding a navigator node
 
 <details>
   <summary>Diff</summary>
+
 ``` 
 diff --git a/bookmarks/bookmarks.module.ts b/bookmarks/bookmarks.module.ts
 new file mode 100644
@@ -110,7 +113,8 @@ index a2dfd14..bd81906 100644
        }
      }
 
-``` 
+```
+
 </details>
 
  > If not working -> checkout `step2` branch
@@ -123,6 +127,8 @@ Add logic and injection to the HOOK
 
 <details>
   <summary>Diff</summary>
+
+```
 diff --git a/bookmarks/bookmarks.service.ts b/bookmarks/bookmarks.service.ts
 index a3e0765..00c23fc 100644
 --- a/bookmarks/bookmarks.service.ts
@@ -168,6 +174,7 @@ index a3e0765..00c23fc 100644
 -}
 \ No newline at end of file
 +}
+```
 
 </details>
 
@@ -179,8 +186,10 @@ Add a action bar for all devices
  - use routing to check if on a device
  - use content projection to avoid root element
  
- <details>
+<details>
   <summary>Diff</summary>
+
+```
   diff --git a/bookmarks/add-bookmark.component.ts b/bookmarks/add-bookmark.component.ts
 new file mode 100644
 index 0000000..8adaff1
@@ -266,8 +275,10 @@ index 9907e4a..c370178 100644
  })
  export class BookmarksModule {}
 
-</details>
+```
 
+</details>
+  
 ## 4. Step
 Add the logic to bookmark a device
 
@@ -276,6 +287,8 @@ Add the logic to bookmark a device
  
 <details>
   <summary>Diff</summary>
+
+```
 diff --git a/bookmarks/add-bookmark.component.ts b/bookmarks/add-bookmark.component.ts
 new file mode 100644
 index 0000000..bc69b7d
@@ -395,5 +408,6 @@ index 9907e4a..c370178 100644
    ],
  })
  export class BookmarksModule {}
+```
 
 </details>
