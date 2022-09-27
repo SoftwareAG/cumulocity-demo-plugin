@@ -180,7 +180,7 @@ index a3e0765..00c23fc 100644
 
  > If not working -> checkout `step3` branch
  
-## 3. Step
+## 4. Step
 Add a action bar for all devices
 
  - use routing to check if on a device
