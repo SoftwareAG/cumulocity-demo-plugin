@@ -1,10 +1,13 @@
-# Summit Demo
+# Cumulocity Plugin Demo
+This is an inofficial demo showing how to build a simple plugin for the Cumulocity UI. 
+
+> In this example the `widget-plugin` app was scaffold in version 1015.164.0. It is recommended to use your platform version. You can do this by running `c8ycli new` and select your preferred version. However, for plugins it is recommended to use at least 1016.0.0, as it is only in beta mode in 1015.x.x.
 
 ## Prepare
  - node 14
  - npm i -g @c8y/cli@next 
  - clone this repository
- - switch to summit-ui-demo
+ - switch to cumulocity-plugin-demo
 
 ## 1. Step
 Add your tenant and shell to npm start command. Run `npm start` and checkout the two application started.
@@ -25,7 +28,7 @@ index b100dfe..a2dfd14 100644
    "description": "This is the Cumulocity module federation plugin. Plugins can be developed like any Cumulocity application, but can be used at runtime by other applications. Therefore, they export an Angular module which can then be imported by any other application. The exports are defined in `package.json`:",
    "scripts": {
 -    "start": "c8ycli server",
-+    "start": "c8ycli server -u http://iot-summit-berlin.dev.c8y.io --shell cockpit",
++    "start": "c8ycli server -u http://demos.cumulocity.com --shell cockpit",
      "build": "c8ycli build",
      "deploy": "c8ycli deploy",
      "postinstall": "ngcc"
