@@ -1,9 +1,9 @@
 {
-  "name": "c8y-summit-ui-demo",
+  "name": "c8y-plugin-ui-demo",
   "version": "1.0.0",
   "description": "This is the Cumulocity module federation plugin. Plugins can be developed like any Cumulocity application, but can be used at runtime by other applications. Therefore, they export an Angular module which can then be imported by any other application. The exports are defined in `package.json`:",
   "scripts": {
-    "start": "c8ycli server",
+    "start": "c8ycli server -u http://jan.latest.stage.c8y.io --shell cockpit-16-0",
     "build": "c8ycli build",
     "deploy": "c8ycli deploy",
     "postinstall": "ngcc"
@@ -22,12 +22,12 @@
     "@angular/platform-browser-dynamic": "14.0.6",
     "@angular/router": "14.0.6",
     "@angular/upgrade": "14.0.6",
-    "@c8y/client": "^1016.0.0",
-    "@c8y/ngx-components": "^1016.0.0",
+    "@c8y/client": "~1016.0.0",
+    "@c8y/ngx-components": "~1016.0.0",
     "@ngx-translate/core": "14.0.0",
     "rxjs": "~6.6.3",
     "zone.js": "~0.11.7",
-    "@c8y/style": "^1016.0.0"
+    "@c8y/style": "~1016.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "14.0.6",
@@ -43,7 +43,7 @@
     "typescript": "4.7.4",
     "style-loader": "3.3.1",
     "html-loader": "4.1.0",
-    "@c8y/cli": "^1016.0.0"
+    "@c8y/cli": "~1016.0.0"
   },
   "c8y": {
     "application": {
