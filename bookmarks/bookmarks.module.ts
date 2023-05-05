@@ -16,5 +16,3 @@ import { AddBookmarkComponent } from "./add-bookmark.component";
   ],
 })
 export class BookmarksModule {}
-
-console.log('LOADED');
