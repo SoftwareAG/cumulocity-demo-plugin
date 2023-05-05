@@ -1,5 +1,5 @@
 {
-  "name": "c8y-plugin-ui-demo",
+  "name": "cumulocity-demo-plugin",
   "version": "1.0.0",
   "description": "This is the Cumulocity module federation plugin. Plugins can be developed like any Cumulocity application, but can be used at runtime by other applications. Therefore, they export an Angular module which can then be imported by any other application. The exports are defined in `package.json`:",
   "scripts": {
@@ -47,10 +47,10 @@
   },
   "c8y": {
     "application": {
-      "name": "summit-ui-demo",
+      "name": "cumulocity-demo-plugin",
       "description": "Custom widget with module federation",
-      "contextPath": "summit-ui-demo",
-      "key": "summit-ui-demo-application-key",
+      "contextPath": "cumulocity-demo-plugin",
+      "key": "cumulocity-demo-plugin-application-key",
       "globalTitle": "Custom widget with Module Federation",
       "tabsHorizontal": true,
       "isPackage": true,
@@ -65,7 +65,7 @@
         }
       ],
       "remotes": {
-        "summit-ui-demo": [
+        "cumulocity-demo-plugin": [
           "WidgetPluginModule"
         ]
       }
