@@ -7,7 +7,7 @@ This is an inofficial demo showing how to build a simple plugin for the Cumuloci
  - node 14
  - npm i -g @c8y/cli@next 
  - clone this repository
- - switch to cumulocity-plugin-demo
+ - switch to cumulocity-plugin-demo and run `npm i`
 
 ## 1. Step
 Add your tenant and shell to npm start command. Run `npm start` and checkout the two application started.
