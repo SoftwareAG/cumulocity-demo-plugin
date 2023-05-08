@@ -1,8 +1,6 @@
 # Cumulocity Plugin Demo
 This is an inofficial demo showing how to build a simple plugin for the Cumulocity UI. 
 
-> In this example the `widget-plugin` app was scaffold in version 1015.164.0. It is recommended to use your platform version. You can do this by running `c8ycli new` and select your preferred version. However, for plugins it is recommended to use at least 1016.0.0, as it is only in beta mode in 1015.x.x.
-
 ## Prepare
  - node 14
  - npm i -g @c8y/cli@next 
